@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+SELECT  count('orderNumber') as buyurtma_soni ,
+customerNumber as mijozId  from  `orders`
+GROUP BY customerNumber ;
+
+SELECT
+customerNumber AS mijoz_id,
+COUNT(*) AS zakazlar_soni
+FROM orders
+GROUP BY customerNumber
+ORDER BY zakazlar_soni DESC;
+
+2 SELECT COUNT('status'), status  from orders
+group by status;
+
+3 SELECT COUNT('orderDate'), orderDate  from orders
+group by orderDate;
+
+
+
+4  SELECT
+DAYNAME(orderDate) AS kunlar,
+COUNT(*) AS buyurtmalar_soni
+FROM orders
+WHERE YEAR(orderDate) = 2003
+GROUP BY DAYNAME(orderDate)
+ORDER BY FIELD(kunlar, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+
+5 select
+YEAR(orderDate) AS yillar,
+count('*') as soni
+from orders
+group by YEAR(orderDate);
+
+6 SELECT MONTHNAME(orderDate) AS oylar,
+count('*') as soni
+from orders
+group by MONTHNAME(orderDate);
+
+
+7 SELECT
+DATEDIFF(shippedDate, orderDate) AS yetkazilgan_kun,
+COUNT(*) AS soni
+FROM orders
+GROUP BY yetkazilgan_kun
+ORDER BY yetkazilgan_kun;
+
+8 SELECT
+monthname(orderDate) AS oy,
+count(customerNumber) as soni
+from orders
+WHERE YEAR(orderDate) = 2004
+GROUP by monthname(orderDate)
+having  count(customerNumber)<10
+order by soni desc;
+
+9 SELECT
+YEAR(orderDate) AS yil,
+    count(customerNumber) as soni
+from orders
+where customerNumber = 141 and status = 'Shipped'
+
+group by YEAR(orderDate)
+
+order by soni desc;
+
+
+</body>
+</html>

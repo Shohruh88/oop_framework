@@ -1,0 +1,34 @@
+# SELECT
+#     curdate() as sana,
+# #     YEAR(paymentDate) AS yil,
+# #     WEEKDAY(paymentDate) AS kun,
+#     SUM(amount) AS Jami
+# FROM payments
+# WHERE sana(2004-01-01)
+# GROUP BY yil, WEEKDAY(paymentDate)
+# ORDER BY yil;
+
+
+
+SELECT
+paymentDate as dushanba_kunlari,
+#     YEAR(paymentDate) AS yil,
+#     WEEKDAY(paymentDate) AS kun,
+SUM(amount) AS Jami
+FROM payments
+WHERE YEAR(paymentDate) = 2005
+AND WEEKDAY(paymentDate) = 0
+GROUP BY dushanba_kunlari, WEEKDAY(paymentDate)
+ORDER BY dushanba_kunlari;
+
+
+
+- 2004 - yilda , yanvardan to mart oyining oxirigacha jami necha so`mlik xarid bo`lganini aniqlang
+SELECT
+YEAR(paymentDate) AS yil,
+SUM(amount) AS JAMI_XARID
+FROM payments
+WHERE paymentDate BETWEEN '2004-01-01' AND '2004-05-31'
+GROUP BY yil
+
+- customerNumber=141 bo`lgan mijoz, 2005 - yilda qilgan buyurtmalarining, nechtasi "Shipped" bo`lganini aniqlang

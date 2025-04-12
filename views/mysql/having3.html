@@ -1,0 +1,21 @@
+# SELECT
+#     YEAR(paymentDate) as yil,
+#     sum(amount) as Jami
+# from payments
+# group by YEAR(paymentDate)
+# ORDER BY yil, sum(amount);
+
+# SELECT
+#
+#     productLine as productLine,
+#     count(productLine) as soni,
+#     sum(buyPrice) as summa
+# from products
+# group by productLine
+# order by soni desc;
+
+# SELECT
+#     productVendor as productVendor,
+#     count(productVendor) as soni
+# from products
+# group by productVendor
