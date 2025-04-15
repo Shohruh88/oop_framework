@@ -10,7 +10,14 @@ class Application
 
         $classname = ucfirst($data[2])."Controller"; //SiteController
         $classname = "controllers\\".$classname;
-        $functionName = $data[3];
+        if(strpos($data[3], "?")){
+            $params = explode("?", $data[3]);
+            $functionName = $params[0];
+
+        }else{
+            $functionName = $data[3];
+        }
+
         if(isset($data[4])){
             $this->id = $data[4];
         }
