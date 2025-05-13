@@ -1,5 +1,5 @@
 <?php
-$kun = 2;
+$kun = 4;
 switch ($kun) {
     case 1: echo "Dushanba"; break;
     case 2: echo "Seshanba"; break;
